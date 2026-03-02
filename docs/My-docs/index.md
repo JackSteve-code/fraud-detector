@@ -1,9 +1,11 @@
 ---
-title: Introduction
-sidebar_label: Introduction
+slug: /
+title: Fraud Detection
+sidebar_label: 
+hide_table_of_contents: true
 ---
 
-# Introduction to Fraud Detection
+### Introduction to Fraud Detection
 
 
 **What is Fraud Detection?**
