@@ -1,0 +1,104 @@
+/**
+ * Exact "Secret Sauce" Expertise Theme
+ * Cosmic Purple + Interactive Neon Green
+ */
+
+:root {
+  --bg-cosmic-purple: #0a0412;   /* Darker base from the JSX background */
+  --neon-green: #00FF41;         /* Exact Secret Sauce Green */
+  --text-gray: #9ca3af;          /* From gray-400 */
+  --glass-border: rgba(31, 41, 55, 0.5); /* border-gray-800/50 */
+}
+
+/* 1. Reset & Hide Navigation */
+.navbar, .theme-doc-breadcrumbs, .footer {
+  display: none !important;
+}
+
+/* 2. Global Styling */
+html, body {
+  background-color: var(--bg-cosmic-purple) !important;
+  color: white;
+  font-family: 'Georgia', serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. The Main Card Container (Replicating "glass-card") */
+.theme-doc-markdown {
+  background: rgba(10, 4, 18, 0.6) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px; /* rounded-3xl */
+  padding: 4rem 3rem;
+  max-width: 850px;
+  margin: 4rem auto;
+  transition: border-color 0.3s ease;
+}
+
+.theme-doc-markdown:hover {
+  border-color: rgba(0, 255, 65, 0.3); /* hover:border-[#00FF41]/30 */
+}
+
+/* 4. Large Background ID Numbers (The "01, 02" effect) */
+/* Note: Since CSS can't easily generate "01" based on text, 
+   we add a glow effect to headings to simulate the '01' vibe */
+.theme-doc-markdown h1::before {
+  content: "01";
+  display: block;
+  font-family: ui-monospace, monospace;
+  font-size: 5rem;
+  font-weight: 900;
+  color: var(--neon-green);
+  opacity: 0.15; /* opacity-20 */
+  margin-bottom: -2rem;
+  transition: opacity 0.3s ease;
+}
+
+.theme-doc-markdown:hover h1::before {
+  opacity: 0.35; /* group-hover:opacity-40 */
+}
+
+/* 5. Headings (Italic, Black weight) */
+.theme-doc-markdown h1, 
+.theme-doc-markdown h2 {
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+  font-style: italic;
+  font-weight: 900; /* font-black */
+  font-size: 3rem;
+  margin-top: 0;
+  transition: color 0.3s ease;
+}
+
+.theme-doc-markdown:hover h1 {
+  color: var(--neon-green) !important;
+  -webkit-text-fill-color: var(--neon-green) !important;
+}
+
+/* 6. Prose (Italic Gray) */
+.theme-doc-markdown p {
+  color: var(--text-gray) !important; /* text-gray-400 */
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* 7. Tags (Pills from the JSX code) */
+code {
+  background-color: #111827 !important; /* bg-gray-900 */
+  color: #d1d5db !important;           /* text-gray-300 */
+  border: 1px solid #1f2937 !important; /* border-gray-800 */
+  border-radius: 9999px !important;    /* rounded-full */
+  padding: 0.25rem 0.75rem !important;
+  font-family: 'Georgia', serif !important;
+  font-style: italic !important;
+  font-size: 0.8rem !important;
+}
+
+/* 8. The Secret Sauce Heading (Specific span style) */
+strong {
+  color: var(--neon-green);
+  font-style: italic;
+}
