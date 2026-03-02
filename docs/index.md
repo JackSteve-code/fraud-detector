@@ -1,6 +1,7 @@
 ---
 title: Introduction
 sidebar_label: Introduction
+hide_title: true
 ---
 
 # Introduction to Fraud Detection

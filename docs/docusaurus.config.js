@@ -1,25 +1,19 @@
 // @ts-check
-import {themes as prismThemes} from 'prism-react-renderer';
+import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Fraud Detector', 
-  tagline: 'The Secret Sauce', 
+  title: 'Fraud Detector',
+  tagline: 'The Secret Sauce',
   favicon: 'img/favicon.ico',
-  future: { v4: true },
 
-  url: 'https://JackSteve-code.github.io', 
-  baseUrl: '/fraud-detector/', 
-  organizationName: 'JackSteve-code', 
-  projectName: 'fraud-detector', 
+  url: 'https://JackSteve-code.github.io',
+  baseUrl: '/fraud-detector/',
+  organizationName: 'JackSteve-code',
+  projectName: 'fraud-detector',
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
   onBrokenLinks: 'warn',
-
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
 
   presets: [
     [
@@ -27,13 +21,17 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          path: 'My-docs', 
-          sidebarPath: './sidebars.js',
+          path: '.', 
           routeBasePath: '/', 
-          exclude: ['node_modules/**'],
-          sidebarItemsGenerator: async () => [], // FORCE EMPTY SIDEBAR
+          sidebarPath: false, 
+          exclude: [
+            '**/node_modules/**',
+            '**/build/**',
+            '**/.docusaurus/**',
+            'README.md',
+          ],
         },
-        blog: false, 
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -45,18 +43,19 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: '', // HIDES TEXT
+        title: '',
         logo: {
-          src: 'img/logo.svg', // Placeholder
-          width: 0,            // HIDES LOGO
+          alt: 'Logo',
+          src: 'img/logo.svg',
+          width: 0,
           height: 0,
         },
-        items: [],             // HIDES LINKS/INTRODUCTIONS
+        items: [],
       },
       footer: {
         style: 'dark',
-        links: [], 
-        copyright: ' ',        // REMOVES COPYRIGHT TEXT
+        links: [],
+        copyright: ' ',
       },
       prism: {
         theme: prismThemes.github,
@@ -64,10 +63,26 @@ const config = {
       },
       colorMode: {
         defaultMode: 'dark',
-        disableSwitch: true,   // LOCKS COSMIC PURPLE
+        disableSwitch: true,
         respectPrefersColorScheme: false,
       },
     }),
+
+  plugins: [
+    () => ({
+      name: 'webpack-config-cleanup',
+      configureWebpack() {
+        return {
+          ignoreWarnings: [
+            {
+              module: /@docusaurus\/mdx-loader/,
+              message: /No serializer registered for VFileMessage/,
+            },
+          ],
+        };
+      },
+    }),
+  ],
 };
 
 export default config;
